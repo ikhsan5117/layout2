@@ -1,4 +1,4 @@
-import 'package:application_1/latihan/pegas/page2.dart';
+import 'package:application_1/latihan/pages/page2.dart';
 import 'package:flutter/material.dart';
 
 class Page1 extends StatelessWidget {
@@ -16,14 +16,16 @@ class Page1 extends StatelessWidget {
         child: Text("Ini halaman 1")),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
-              context, 
-              MaterialPageRoute(
-                builder: (context) {
-              return Page2();
-            },
-            ),
-           );
+            //mengunakan route
+            Navigator.pushNamed(context, "/halaman2");
+          //   Navigator.push(
+          //     context, 
+          //     MaterialPageRoute(
+          //       builder: (context) {
+          //     return Page2();
+          //   },
+          //   ),
+          //  );
           },
           child: Icon(Icons.arrow_forward),
         ),

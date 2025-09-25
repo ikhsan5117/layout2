@@ -1,3 +1,4 @@
+import 'package:application_1/latihan/pages/page1.dart';
 import 'package:flutter/material.dart';
 
 class Page2 extends StatelessWidget {
@@ -12,8 +13,16 @@ class Page2 extends StatelessWidget {
         foregroundColor: Colors.white, 
       ),
       body: Center(
-        child: Text("Ini halaman 2"),
+        child: Text("Ini halaman 2")
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pop(context);
+        },
+        child: Icon(Icons.arrow_back),
+        ),
+        floatingActionButtonLocation: 
+        FloatingActionButtonLocation.centerFloat,
     );
   }
 }
