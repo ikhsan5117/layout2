@@ -64,6 +64,11 @@ flutter:
     - Gambar/download1.jpeg
     - Gambar/001.png
     - Gambar/02.png
+    - Gambar/card.jpg 
+    - Gambar/figure.png 
+    - Gambar/figure1.png
+    - Gambar/ex3.png
+    - Gambar/ex4.png 
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
