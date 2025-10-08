@@ -1,5 +1,4 @@
 // import file lain
-import 'package:application_1/latihan/tugas2.dart';
 import 'package:application_1/tugas/Hp.dart';
 import 'package:flutter/material.dart';
 
