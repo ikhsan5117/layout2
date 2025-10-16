@@ -8,12 +8,14 @@ class List1 extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text("Latihan Layout"),),
       body: ListView(
+        padding: EdgeInsets.all(8),
         children: [
-          Container(
-            height: 400,
-            decoration: BoxDecoration(color: Colors.lightBlue),
-          ),
-          Container(height: 400, decoration: BoxDecoration(color: Colors.greenAccent),)
+          ListTile(
+           title: Text("Mawar"),
+           subtitle: Text("Manager"),
+           leading: Icon(Icons.person),
+           hoverColor: Colors.greenAccent,
+          )
         ],
       ),
     );

@@ -1,5 +1,5 @@
 // import file lain
-import 'package:application_1/latihan/List_2.dart';
+import 'package:application_1/latihan/list_3.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: List1()
+      home: List2()
     );
   }
 }
