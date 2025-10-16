@@ -12,7 +12,14 @@ class _TextBoxPageState extends State<TextBoxPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("text Box flutter")),
-      body: Center(child: Text("halaman text box")),
+      body: Center(child: TextField(
+        decoration: InputDecoration(
+          labelText: "Nama Lengkap",
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+          )
+        ),
+      )),
     );
   }
 }
