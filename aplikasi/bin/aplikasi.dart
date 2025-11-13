@@ -12,5 +12,5 @@ void main(List<String> arguments) async {
   // membuat user baru
   User p = User(id: 10, username: "andi", email: "andi@example.com", password: "1234");
   int idUserBaru = await users.UserHelper().createUser(p);
-  print("User baru berhasil dibuat dengan id: $idUserBaru");
+  print("id user yang baru dibuat : $idUserBaru");
 }

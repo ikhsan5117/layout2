@@ -7,13 +7,15 @@ class UserHelper {
   final Map<String,String> header ={
     "Content-Type":"application/json"
   };
+  
+  Map<String, String>? get _header => header;
 
 
   // method membuat user baru
   Future<int> createUser(User p) async{
     var url = Uri.parse("https://fakestoreapi.com/users");
     try {
-      var respon = await http.post(url,headers: header, body: jsonEncode(p.toMap()),);
+      var respon = await http.post(url,headers: _header, body: jsonEncode(p.toMap()),);
       if(respon.statusCode == 201){
         var json = jsonDecode(respon.body);
         return json['id'];
