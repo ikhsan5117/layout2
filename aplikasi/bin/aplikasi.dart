@@ -6,6 +6,11 @@ void main(List<String> arguments) async {
   // ambilProduk();
   print("Sedang mengambil data user...");
   // mengambil objek untuk menampung data user
-  User pengguna = await users.UserHelper().getUserById(2);
-  print(pengguna);
+  User pengguna = await users.UserHelper().getUserById(3);
+  print("Email user: ${pengguna.email}");
+
+  // membuat user baru
+  User p = User(id: 10, username: "andi", email: "andi@example.com", password: "1234");
+  int idUserBaru = await users.UserHelper().createUser(p);
+  print("User baru berhasil dibuat dengan id: $idUserBaru");
 }

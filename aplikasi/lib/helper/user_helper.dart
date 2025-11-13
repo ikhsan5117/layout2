@@ -4,6 +4,28 @@ import 'package:aplikasi/model/user.dart';
 import 'package:http/http.dart' as http;
 
 class UserHelper {
+  final Map<String,String> header ={
+    "Content-Type":"application/json"
+  };
+
+
+  // method membuat user baru
+  Future<int> createUser(User p) async{
+    var url = Uri.parse("https://fakestoreapi.com/users");
+    try {
+      var respon = await http.post(url,headers: header, body: jsonEncode(p.toMap()),);
+      if(respon.statusCode == 201){
+        var json = jsonDecode(respon.body);
+        return json['id'];
+      } else {
+        throw Exception("Gagal membuat user baru dengan kode: ${respon.statusCode}");
+      }
+    } catch (e) {
+      throw Exception("Error: $e");
+    }
+  }
+
+
   Future<User> getUserById(int id) async {
     var url = Uri.parse("https://fakestoreapi.com/users/$id");
     try {
