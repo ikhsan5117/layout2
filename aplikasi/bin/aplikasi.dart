@@ -1,5 +1,6 @@
 // import 'package:aplikasi/helper/produk_helper.dart';
 import 'package:aplikasi/helper/user_helper.dart' as users;
+import 'package:aplikasi/helper/user_helper.dart';
 import 'package:aplikasi/model/user.dart';
 
 void main(List<String> arguments) async {
@@ -11,6 +12,6 @@ void main(List<String> arguments) async {
 
   // membuat user baru
   User p = User(id: 10, username: "andi", email: "andi@example.com", password: "1234");
-  int idUserBaru = await users.UserHelper().createUser(p);
+  int idUserBaru = await UserHelper().createUser(p);
   print("id user yang baru dibuat : $idUserBaru");
 }
