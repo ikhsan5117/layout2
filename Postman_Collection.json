@@ -1,0 +1,162 @@
+{
+  "info": {
+    "name": "Application_1 API Collection",
+    "description": "Postman collection for testing APIs used in Application_1 (Users from JSONPlaceholder, Products, Carts, and Auth from FakeStoreAPI)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://jsonplaceholder.typicode.com/users",
+              "protocol": "https",
+              "host": ["jsonplaceholder", "typicode", "com"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://jsonplaceholder.typicode.com/users/{{user_id}}",
+              "protocol": "https",
+              "host": ["jsonplaceholder", "typicode", "com"],
+              "path": ["users", "{{user_id}}"]
+            }
+          },
+          "variable": [
+            {
+              "key": "user_id",
+              "value": "1",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://fakestoreapi.com/products",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["products"]
+            }
+          }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://fakestoreapi.com/products/{{product_id}}",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["products", "{{product_id}}"]
+            }
+          },
+          "variable": [
+            {
+              "key": "product_id",
+              "value": "1",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Carts",
+      "item": [
+        {
+          "name": "Get All Carts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://fakestoreapi.com/carts",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["carts"]
+            }
+          }
+        },
+        {
+          "name": "Get Cart by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://fakestoreapi.com/carts/{{cart_id}}",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["carts", "{{cart_id}}"]
+            }
+          },
+          "variable": [
+            {
+              "key": "cart_id",
+              "value": "1",
+              "type": "string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"mor_2314\",\n  \"password\": \"83r5^_\"\n}"
+            },
+            "url": {
+              "raw": "https://fakestoreapi.com/auth/login",
+              "protocol": "https",
+              "host": ["fakestoreapi", "com"],
+              "path": ["auth", "login"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url_jsonplaceholder",
+      "value": "https://jsonplaceholder.typicode.com",
+      "type": "string"
+    },
+    {
+      "key": "base_url_fakestore",
+      "value": "https://fakestoreapi.com",
+      "type": "string"
+    }
+  ]
+}
