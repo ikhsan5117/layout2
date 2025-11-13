@@ -4,7 +4,8 @@ import 'package:aplikasi/model/user.dart';
 
 void main(List<String> arguments) async {
   // ambilProduk();
-  print("Ambil data dari user...");
-  User pengguna = await users.getUserById(5);
-  print(pengguna.password);
+  print("Sedang mengambil data user...");
+  // mengambil objek untuk menampung data user
+  User pengguna = await users.UserHelper().getUserById(2);
+  print(pengguna);
 }

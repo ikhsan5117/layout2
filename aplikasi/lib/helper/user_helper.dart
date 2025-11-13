@@ -1,24 +1,24 @@
-import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 import 'package:aplikasi/model/user.dart';
+import 'package:http/http.dart' as http;
 
-// function ambil data user dari server
-Future<User> getUserById(int id)async{
-  var alamat = Uri.parse("https://jsonplaceholder.typicode.com/users/$id");
-  print("Sedang mengambil data user...");
-
-  // error handler jika terjadi error
-  try{
-    // lakukan requset ke server
-    var respon = await http.get(alamat);
-    // cek status code dari server
-    if(respon.statusCode == 200){
-      User pengguna = User.fromJson(respon.body);
-      return pengguna;
-    } else {
-      // jika gagal
-      throw Exception("Gagal mengambil data....");
+class UserHelper {
+  Future<User> getUserById(int id) async {
+    var url = Uri.parse("https://fakestoreapi.com/users/$id");
+    try {
+      var respon = await http.get(url);
+      if (respon.statusCode == 200) {
+        // konversi respon ke format map
+        var json = jsonDecode(respon.body);
+        // konversi menjadi objek User
+        return User.fromMap(json);
+      } else {
+        int kode = respon.statusCode;
+        throw Exception("Gagal mendapatkan user dengan kode: $kode");
+      }
+    } catch (e) {
+      throw Exception("Error: $e");
     }
-  } catch(e) {
-    throw Exception("Terjadi kesalahan : $e");
   }
 }
