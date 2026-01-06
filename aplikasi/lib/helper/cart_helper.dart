@@ -15,8 +15,8 @@ class CartHelper {
 		try {
 			var res = await http.get(url);
 			if (res.statusCode == 200) {
-				var json = jsonDecode(res.body) as List<dynamic>;
-				return json.map((item) => Cart.fromMap(item)).toList();
+				var jsonData = json.decode(res.body) as List<dynamic>;
+				return jsonData.map((item) => Cart.fromMap(item)).toList();
 			} else {
 				throw Exception('Gagal mendapatkan carts, kode: ${res.statusCode}');
 			}
@@ -31,8 +31,8 @@ class CartHelper {
 		try {
 			var res = await http.get(url);
 			if (res.statusCode == 200) {
-				var json = jsonDecode(res.body);
-				return Cart.fromMap(json);
+				var jsonData = json.decode(res.body);
+				return Cart.fromMap(jsonData);
 			} else {
 				throw Exception('Gagal mendapatkan cart, kode: ${res.statusCode}');
 			}
@@ -52,10 +52,10 @@ class CartHelper {
 		};
 
 		try {
-			var res = await http.post(url, headers: _header, body: jsonEncode(body));
+			var res = await http.post(url, headers: _header, body: json.encode(body));
 			if (res.statusCode == 200 || res.statusCode == 201) {
-				var json = jsonDecode(res.body);
-				return json['id'];
+				var jsonData = json.decode(res.body);
+				return jsonData['id'];
 			} else {
 				throw Exception('Gagal membuat cart, kode: ${res.statusCode}');
 			}
@@ -74,10 +74,10 @@ class CartHelper {
 		};
 
 		try {
-			var res = await http.put(url, headers: _header, body: jsonEncode(body));
+			var res = await http.put(url, headers: _header, body: json.encode(body));
 			if (res.statusCode == 200) {
-				var json = jsonDecode(res.body);
-				return Cart.fromMap(json);
+				var jsonData = json.decode(res.body);
+				return Cart.fromMap(jsonData);
 			} else {
 				throw Exception('Gagal melakukan update cart, kode: ${res.statusCode}');
 			}
@@ -92,6 +92,59 @@ class CartHelper {
 		try {
 			var res = await http.delete(url);
 			return res.statusCode == 200 || res.statusCode == 204;
+		} catch (e) {
+			throw Exception('Error: $e');
+		}
+	}
+
+	// Get user's carts
+	Future<List<Cart>> getUserCarts(int userId) async {
+		var url = Uri.parse('https://fakestoreapi.com/carts/user/$userId');
+		try {
+			var res = await http.get(url);
+			if (res.statusCode == 200) {
+				var jsonData = json.decode(res.body) as List<dynamic>;
+				return jsonData.map((item) => Cart.fromMap(item)).toList();
+			} else {
+				throw Exception('Gagal mendapatkan carts user, kode: ${res.statusCode}');
+			}
+		} catch (e) {
+			throw Exception('Error: $e');
+		}
+	}
+
+	// Get carts in date range
+	Future<List<Cart>> getCartsInDateRange(DateTime startDate, DateTime endDate) async {
+		var url = Uri.parse('https://fakestoreapi.com/carts')
+			.replace(queryParameters: {
+				'startdate': startDate.toIso8601String(),
+				'enddate': endDate.toIso8601String(),
+			});
+		try {
+			var res = await http.get(url);
+			if (res.statusCode == 200) {
+				var jsonData = json.decode(res.body) as List<dynamic>;
+				return jsonData.map((item) => Cart.fromMap(item)).toList();
+			} else {
+				throw Exception('Gagal mendapatkan carts dalam rentang tanggal, kode: ${res.statusCode}');
+			}
+		} catch (e) {
+			throw Exception('Error: $e');
+		}
+	}
+
+	// Get carts with limit
+	Future<List<Cart>> getCartsWithLimit(int limit) async {
+		var url = Uri.parse('https://fakestoreapi.com/carts')
+			.replace(queryParameters: {'limit': limit.toString()});
+		try {
+			var res = await http.get(url);
+			if (res.statusCode == 200) {
+				var jsonData = json.decode(res.body) as List<dynamic>;
+				return jsonData.map((item) => Cart.fromMap(item)).toList();
+			} else {
+				throw Exception('Gagal mendapatkan carts dengan limit, kode: ${res.statusCode}');
+			}
 		} catch (e) {
 			throw Exception('Error: $e');
 		}

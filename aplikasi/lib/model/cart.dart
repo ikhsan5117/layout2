@@ -68,10 +68,14 @@ class Cart {
 		return Cart(
 			id: map['id']?.toInt() ?? 0,
 			userId: map['userId']?.toInt() ?? 0,
-			date: DateTime.parse(map['date']),
-			products: List<CartItem>.from(
-				(map['products'] as List<dynamic>).map((x) => CartItem.fromMap(x)),
-			),
+			date: map['date'] != null 
+				? DateTime.parse(map['date'].toString())
+				: DateTime.now(),
+			products: map['products'] != null
+				? List<CartItem>.from(
+					(map['products'] as List<dynamic>).map((x) => CartItem.fromMap(x as Map<String, dynamic>)),
+				)
+				: <CartItem>[],
 		);
 	}
 
